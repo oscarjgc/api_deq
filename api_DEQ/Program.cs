@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.WebHost.UseUrls("http://localhost:5005/");
 // Add services to the container.
 
 builder.Services.AddControllers();

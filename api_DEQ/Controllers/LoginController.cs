@@ -89,8 +89,8 @@ namespace api_DEQ.Controllers
                 Resultado = "éxito",
                 Fecha = DateTime.Now,
                 IdUsuario = res.IdUsuario,
-                NombreUsuario = res.UsuarioName
-                
+                NombreUsuario = res.UsuarioName,
+                IdPerfil = 1
             });
         }
 
