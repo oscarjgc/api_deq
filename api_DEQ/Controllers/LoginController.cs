@@ -22,14 +22,14 @@ namespace api_DEQ.Controllers
         [HttpGet("obtener")]
         public IActionResult Get()
         {
-            Usuario usuario = new Usuario()
-            {
-                Status = true,
-                UsuarioName = "cliente",
-                Contrasenia = Utileria.Creahash("123")
-            };
-            _Basededatos.Usuario.Add(usuario);
-            _Basededatos.SaveChanges();
+            //Usuario usuario = new Usuario()
+            //{
+            //    Status = true,
+            //    UsuarioName = "cliente",
+            //    Contrasenia = Utileria.Creahash("123")
+            //};
+            //_Basededatos.Usuario.Add(usuario);
+            //_Basededatos.SaveChanges();
         //Usuario: admin(contrasenia: 123)
             return Ok("Hola");
 
