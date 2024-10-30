@@ -19,20 +19,21 @@ namespace api_DEQ.Controllers
         public LoginController(BDContext_DEQ Basededatos) {
             _Basededatos = Basededatos;
         }
-        //[HttpGet("obtener")]
-        //public IActionResult Get()
-        //{
-        //    //Usuario usuario = new Usuario() {
-        //    //    Status = true,
-        //    //    UsuarioName = "admin",
-        //    //    Contrasenia = Utileria.Creahash("123")
-        //    //};
-        //    //_Basededatos.Usuario.Add(usuario);
-        //    //_Basededatos.SaveChanges();
-        //    //Usuario: admin (contrasenia: 123)
-        //    return Ok("Hola");
+        [HttpGet("obtener")]
+        public IActionResult Get()
+        {
+            Usuario usuario = new Usuario()
+            {
+                Status = true,
+                UsuarioName = "cliente",
+                Contrasenia = Utileria.Creahash("123")
+            };
+            _Basededatos.Usuario.Add(usuario);
+            _Basededatos.SaveChanges();
+        //Usuario: admin(contrasenia: 123)
+            return Ok("Hola");
 
-        //}
+        }
 
         [HttpPost("IniciarSesion")]
         public IActionResult IniciarSesion (UserInfo userInfo){ 
@@ -81,7 +82,17 @@ namespace api_DEQ.Controllers
                claims: claims,
                expires: expiration,
                signingCredentials: creds); // token
-
+            int IdPerfil, IdCliente;
+            if(res.UsuarioName == "admin")
+            {
+                IdPerfil = 1;
+                IdCliente = 0;
+            }
+            else
+            {
+                IdPerfil = 2;
+                IdCliente = 1;
+            }
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
@@ -90,7 +101,8 @@ namespace api_DEQ.Controllers
                 Fecha = DateTime.Now,
                 IdUsuario = res.IdUsuario,
                 NombreUsuario = res.UsuarioName,
-                IdPerfil = 1
+                IdPerfil = IdPerfil,
+                IdCliente = IdCliente
             });
         }
 
