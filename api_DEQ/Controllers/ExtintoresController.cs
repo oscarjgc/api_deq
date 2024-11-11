@@ -108,7 +108,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.Extintor.Add(nuevo_extintor); // se agrega el extintor a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Extintor guardado");
+                actionResult = Ok(new {mensaje = "Extintor guardado" });
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.Extintor.Update(nuevo_extintor); // se modifica el extintor a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Extintor modificado");
+                actionResult = Ok(new { mensaje = "Extintor modificado" } );
             }
             catch (Exception ex)
             {
@@ -153,7 +153,7 @@ namespace api_DEQ.Controllers
                 extintor.Status = false; // se deshabilita el extintor
                 _Basededatos.Extintor.Update(extintor); // se inserta en tabla
                 _Basededatos.SaveChanges(); // se guardan
-                actionResult = Ok("Extintor eliminado");
+                actionResult = Ok(new { mensaje = "Extintor eliminado" });
             }
             catch (Exception ex)
             {
