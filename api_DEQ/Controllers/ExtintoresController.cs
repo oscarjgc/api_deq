@@ -32,7 +32,7 @@ namespace api_DEQ.Controllers
                     tipoExt.Descripcion = cons.NumeroDeExtintor;
                     lista.Add(tipoExt);
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x=>x.IdTipoExtintor));
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace api_DEQ.Controllers
                     tipoExt.Descripcion = cons.NumeroDeExtintor;
                     lista.Add(tipoExt);
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.IdTipoExtintor));
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace api_DEQ.Controllers
                     tipoExt.FechaFabricacion = cons.FechaFabricacion;
                     lista.Add(tipoExt); // se carga extintor a la lista 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.IdTipoExtintor));
             }
             catch (Exception ex)
             {
@@ -141,7 +141,7 @@ namespace api_DEQ.Controllers
             return actionResult;
         }
 
-        [HttpDelete] // 
+        [HttpDelete("Borrar_Extintores/{idextintor}")] // 
         public IActionResult Borrar_Extintores(int idextintor) // se espesifica que se quiere borrar el extintor por ID
         {
             IActionResult actionResult = null;

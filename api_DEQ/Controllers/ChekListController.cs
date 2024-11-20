@@ -50,7 +50,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.CLE.Add(checkListExtintor); // se agrega el Chek List a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Guardado");
+                actionResult = Ok(new { mensaje = "Guardado" });
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x=>x.Id));
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.Id));
             }
             catch (Exception ex)
             {
@@ -169,7 +169,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.CLH.Add(checkListH); // se agrega el Chek List a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Guardado");
+                actionResult = Ok(new { mensaje = "Guardado" });
             }
             catch (Exception ex)
             {
@@ -197,7 +197,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.Id));
             }
             catch (Exception ex)
             {
@@ -223,7 +223,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.Id));
             }
             catch (Exception ex)
             {
@@ -283,7 +283,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.CLEA.Add(checkListEA); // se agrega el Chek List a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Guardado");
+                actionResult = Ok(new { mensaje = "Guardado" });
             }
             catch (Exception ex)
             {
@@ -311,7 +311,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.Id));
             }
             catch (Exception ex)
             {
@@ -337,7 +337,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoCLG); // 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.Id));
             }
             catch (Exception ex)
             {
