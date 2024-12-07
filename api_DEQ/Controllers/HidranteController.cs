@@ -34,7 +34,7 @@ namespace api_DEQ.Controllers
                     tipoExt.Descripcion = cons.NumeroHidrante;
                     lista.Add(tipoExt);
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.IdTipoExtintor));
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace api_DEQ.Controllers
                     tipoExt.Descripcion = cons.NumeroHidrante;
                     lista.Add(tipoExt);
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.IdTipoExtintor));
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace api_DEQ.Controllers
 
                     lista.Add(tipoEA); // se carga Hidrante a la lista 
                 }
-                actionResult = Ok(lista);
+                actionResult = Ok(lista.OrderByDescending(x => x.IdAutonomo));
             }
             catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.Hidrante.Add(nuevo_Hidrante); // se agrega el Hidrante a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Hidrante guardado");
+                actionResult = Ok(new { mensaje = "Hidrante guardado"});
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.Hidrante.Update(nuevo_Hidrante); // se modifica el Hidrante a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Hidrante modificado");
+                actionResult = Ok(new { mensaje = "Hidrante modificado" });
             }
             catch (Exception ex)
             {
@@ -138,7 +138,7 @@ namespace api_DEQ.Controllers
             return actionResult;
         }
 
-        [HttpDelete] // 
+        [HttpDelete("Borrar_Hidrante/{idhidrante}")] // 
         public IActionResult Borrar_Hidrante(int id_Hidrante) // se espesifica que se quiere borrar el Hidrante por ID
         {
             IActionResult actionResult = null;
@@ -150,7 +150,7 @@ namespace api_DEQ.Controllers
                 hidrante.Status = false; // se deshabilita el Hidrante
                 _Basededatos.Hidrante.Update(hidrante); // se inserta en tabla
                 _Basededatos.SaveChanges(); // se guardan
-                actionResult = Ok("Hidrante eliminado");
+                actionResult = Ok(new { mensaje = "Hidrante eliminado" });
             }
             catch (Exception ex)
             {

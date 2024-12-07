@@ -84,7 +84,7 @@ namespace api_DEQ.Controllers
                     tipoExt.FechaFabricacion = cons.FechaFabricacion;
                     lista.Add(tipoExt); // se carga extintor a la lista 
                 }
-                actionResult = Ok(lista.OrderByDescending(x => x.IdTipoExtintor));
+                actionResult = Ok(lista.OrderByDescending(x => x.IdExtintor));
             }
             catch (Exception ex)
             {
