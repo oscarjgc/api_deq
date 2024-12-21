@@ -137,13 +137,13 @@ namespace api_DEQ.Controllers
         }
 
         [HttpDelete("Borrar_EA/{idEA}")] // 
-        public IActionResult Borrar_EA(int id_EA) // se espesifica que se quiere borrar el extintor por ID
+        public IActionResult Borrar_EA(int idEA) // se espesifica que se quiere borrar el extintor por ID
         {
             IActionResult actionResult = null;
 
             try
             {
-                var consulta = _Basededatos.EquipoAutonomo.Where(x => x.IdAutonomo == id_EA).FirstOrDefault(); // para obtener el extintor a borrar
+                var consulta = _Basededatos.EquipoAutonomo.Where(x => x.IdAutonomo == idEA).FirstOrDefault(); // para obtener el extintor a borrar
                 EquipoAutonomo EA = consulta; //se asigna el equipo autonomo encontrado
                 EA.Status = false; // se deshabilita el equipo autonomo
                 _Basededatos.EquipoAutonomo.Update(EA); // se inserta en tabla

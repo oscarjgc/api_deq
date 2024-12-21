@@ -139,13 +139,13 @@ namespace api_DEQ.Controllers
         }
 
         [HttpDelete("Borrar_Hidrante/{idhidrante}")] // 
-        public IActionResult Borrar_Hidrante(int id_Hidrante) // se espesifica que se quiere borrar el Hidrante por ID
+        public IActionResult Borrar_Hidrante(int idhidrante) // se espesifica que se quiere borrar el Hidrante por ID
         {
             IActionResult actionResult = null;
 
             try
             {
-                var consulta = _Basededatos.Hidrante.Where(x => x.IdHidrante == id_Hidrante).FirstOrDefault(); // para obtener el Hidrante a borrar
+                var consulta = _Basededatos.Hidrante.Where(x => x.IdHidrante == idhidrante).FirstOrDefault(); // para obtener el Hidrante a borrar
                 Hidrante hidrante = consulta; //se asigna el Hidrante encontrado
                 hidrante.Status = false; // se deshabilita el Hidrante
                 _Basededatos.Hidrante.Update(hidrante); // se inserta en tabla
