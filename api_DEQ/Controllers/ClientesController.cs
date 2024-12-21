@@ -43,6 +43,31 @@ namespace api_DEQ.Controllers
             return actionResult;
         }
 
+        [HttpGet("{idcliente}")]
+
+        public IActionResult obtenerCliente(int idcliente)
+        {
+            IActionResult actionResult = null;
+            List<AnonymousTipoExt> lista = new List<AnonymousTipoExt>();
+            try
+            {
+                var consulta = _Basededatos.Clientes.Where(x => x.IdCliente == idcliente && x.Status == true).ToList(); //para devolver una lista
+                foreach (var cons in consulta)
+                {
+                    AnonymousTipoExt tipoExt = new AnonymousTipoExt();
+                    tipoExt.IdTipoExtintor = cons.IdCliente;
+                    tipoExt.Descripcion = cons.Nombre;
+                    lista.Add(tipoExt);
+                }
+                actionResult = Ok(lista);
+            }
+            catch (Exception ex)
+            {
+                actionResult = BadRequest(ex.Message);
+            }
+            return actionResult;
+        }
+
         [HttpPost]
 
         public IActionResult guardar(Nombre cliente)
@@ -55,7 +80,7 @@ namespace api_DEQ.Controllers
                 clienteExt.Status = true;
                 _Basededatos.Clientes.Add(clienteExt);
                 _Basededatos.SaveChanges();
-                actionResult = Ok("Guardar");
+                actionResult = Ok(new { mensaje = "Cliente guardado" });
             }
             catch (Exception ex)
             {
@@ -84,7 +109,7 @@ namespace api_DEQ.Controllers
                 clienteExt.Status = cliente.status;
                 _Basededatos.Clientes.Update(clienteExt);
                 _Basededatos.SaveChanges();
-                actionResult = Ok("Modificado");
+                actionResult = Ok(new { mensaje = "Cliente modificado" });
             }
             catch (Exception ex)
             { 
@@ -93,7 +118,7 @@ namespace api_DEQ.Controllers
 
             return actionResult;
         }
-        [HttpDelete("{idcliente}")]
+        [HttpDelete("Borrar_Clientes/{idcliente}")]
         public IActionResult Eliminar(int idcliente)
         {
             IActionResult actionResult = null;
@@ -110,7 +135,7 @@ namespace api_DEQ.Controllers
                 clienteExt.Status = false;
                 _Basededatos.Clientes.Update(clienteExt);
                 _Basededatos.SaveChanges();
-                actionResult = Ok("Eliminado");
+                actionResult = Ok(new { mensaje = "Cliente eliminado" });
             }
             catch (Exception ex)
             {
