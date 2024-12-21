@@ -105,7 +105,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.EquipoAutonomo.Add(nuevo_EA); // se agrega el Equipo Autonomo a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Equipo Autonomo guardado");
+                actionResult = Ok(new { mensaje = "Equipo Autonomo guardado" });
             }
             catch (Exception ex)
             {
@@ -127,7 +127,7 @@ namespace api_DEQ.Controllers
                 _Basededatos.EquipoAutonomo.Update(nuevo_EA); // se modifica el Equipon Autonomo a la tabla
                 _Basededatos.SaveChanges(); // se confirman los cambios
 
-                actionResult = Ok("Equipo Autonomo modificado");
+                actionResult = Ok(new { mensaje = "Equipo Autonomo modificado" });
             }
             catch (Exception ex)
             {
@@ -136,7 +136,7 @@ namespace api_DEQ.Controllers
             return actionResult;
         }
 
-        [HttpDelete] // 
+        [HttpDelete("Borrar_EA/{idEA}")] // 
         public IActionResult Borrar_EA(int id_EA) // se espesifica que se quiere borrar el extintor por ID
         {
             IActionResult actionResult = null;
@@ -148,7 +148,7 @@ namespace api_DEQ.Controllers
                 EA.Status = false; // se deshabilita el equipo autonomo
                 _Basededatos.EquipoAutonomo.Update(EA); // se inserta en tabla
                 _Basededatos.SaveChanges(); // se guardan
-                actionResult = Ok("Equipo Autonomo eliminado");
+                actionResult = Ok(new { mensaje = "Equipo Autonomo eliminado" });
             }
             catch (Exception ex)
             {
