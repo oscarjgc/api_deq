@@ -48,15 +48,16 @@ namespace api_DEQ.Controllers
         public IActionResult obtenerCliente(int idcliente)
         {
             IActionResult actionResult = null;
-            List<AnonymousTipoExt> lista = new List<AnonymousTipoExt>();
+            List<Nombre> lista = new List<Nombre>();
             try
             {
                 var consulta = _Basededatos.Clientes.Where(x => x.IdCliente == idcliente && x.Status == true).ToList(); //para devolver una lista
                 foreach (var cons in consulta)
                 {
-                    AnonymousTipoExt tipoExt = new AnonymousTipoExt();
-                    tipoExt.IdTipoExtintor = cons.IdCliente;
-                    tipoExt.Descripcion = cons.Nombre;
+                    Nombre tipoExt = new Nombre();
+                    tipoExt.idcliente = cons.IdCliente;
+                    tipoExt.NombreCompleto = cons.Nombre;
+                    tipoExt.status = cons.Status;
                     lista.Add(tipoExt);
                 }
                 actionResult = Ok(lista);
