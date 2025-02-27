@@ -12,6 +12,8 @@ namespace LC_DEQ.Models.BaseDeDatos
         public string UsuarioName { get; set; }
         public string Contrasenia { get; set; }
         public bool Status {  get; set; }
+        public int IdPerfil { get; set; }
+        public int IdCliente { get; set; }
         public DateTime FechaHoraCaptura { get; set; }
         public List<CheckListExtintor> ChekListExtintors { get; set; }
         public List<CheckListEA> ChekListEA { get; set; }

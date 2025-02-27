@@ -82,17 +82,7 @@ namespace api_DEQ.Controllers
                claims: claims,
                expires: expiration,
                signingCredentials: creds); // token
-            int IdPerfil, IdCliente;
-            if(res.UsuarioName == "admin")
-            {
-                IdPerfil = 1;
-                IdCliente = 0;
-            }
-            else
-            {
-                IdPerfil = 2;
-                IdCliente = 1;
-            }
+
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
@@ -101,8 +91,8 @@ namespace api_DEQ.Controllers
                 Fecha = DateTime.Now,
                 IdUsuario = res.IdUsuario,
                 NombreUsuario = res.UsuarioName,
-                IdPerfil = IdPerfil,
-                IdCliente = IdCliente
+                IdPerfil = res.IdPerfil,
+                IdCliente = res.IdCliente
             });
         }
 

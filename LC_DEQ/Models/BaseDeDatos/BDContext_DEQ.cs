@@ -296,7 +296,18 @@ namespace LC_DEQ.Models.BaseDeDatos
                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                .IsRequired();
 
+                Entity.Property(x => x.IdPerfil)
+              .HasColumnName("IdPerfil")
+              .HasColumnType("integer")
+              .HasDefaultValueSql("1")
+              .IsRequired();
 
+
+                Entity.Property(x => x.IdCliente)
+             .HasColumnName("IdCliente")
+             .HasColumnType("integer")
+             .HasDefaultValueSql("1")
+             .IsRequired();
             }
 
                 );

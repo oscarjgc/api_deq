@@ -22,8 +22,4 @@
     <ProjectReference Include="..\LC_DEQ\LC_DEQ.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="apiDEQ\" />
-  </ItemGroup>
-
 </Project>
