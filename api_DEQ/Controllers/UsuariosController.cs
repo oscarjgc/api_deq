@@ -1,10 +1,15 @@
 ﻿using api_DEQ.Models;
 using api_DEQ.Utilerias;
 using LC_DEQ.Models.BaseDeDatos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_DEQ.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] //este es para validar el token
     public class UsuariosController : Controller
     {
         private readonly BDContext_DEQ _Basededatos;
