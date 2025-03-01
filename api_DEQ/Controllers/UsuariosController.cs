@@ -46,7 +46,7 @@ namespace api_DEQ.Controllers
 
         [HttpPost]
 
-        public IActionResult guardar(Usuario usuario)
+        public IActionResult guardar(AnonymusUsuario usuario)
         {
             IActionResult actionResult = null;
             try
@@ -72,7 +72,7 @@ namespace api_DEQ.Controllers
 
         [HttpPut]
 
-        public IActionResult Modificar(Usuario usuario)
+        public IActionResult Modificar(AnonymusUsuario usuario)
         {
             IActionResult actionResult = null;
             try
