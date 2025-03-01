@@ -55,8 +55,8 @@ namespace api_DEQ.Controllers
                 clienteExt.UsuarioName = usuario.UsuarioName;
                 clienteExt.Status = true;
                 clienteExt.Contrasenia = Utileria.Creahash(usuario.Contrasenia);
-                clienteExt.IdPerfil = usuario.IdPerfil;
-                clienteExt.IdCliente = usuario.IdCliente;
+                clienteExt.IdPerfil = usuario.IdPerfil.Value;
+                clienteExt.IdCliente = usuario.IdCliente.Value;
                 _Basededatos.Usuario.Add(clienteExt);
                 _Basededatos.SaveChanges();
                 actionResult = Ok(new { mensaje = "Usuario guardado" });
