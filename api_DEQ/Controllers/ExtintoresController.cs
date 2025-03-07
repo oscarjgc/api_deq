@@ -36,7 +36,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
@@ -60,7 +60,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
@@ -88,7 +88,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
@@ -112,7 +112,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
@@ -136,7 +136,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
@@ -157,7 +157,7 @@ namespace api_DEQ.Controllers
             }
             catch (Exception ex)
             {
-                actionResult = BadRequest(ex.Message);
+                actionResult = BadRequest(new { resultado = ex.Message });
             }
             return actionResult;
         }
